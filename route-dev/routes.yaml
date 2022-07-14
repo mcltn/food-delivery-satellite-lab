@@ -1,0 +1,111 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: example-food
+  namespace: grub
+spec:
+  host: food-{{YOUR_NAMESPACE}}.{{CLUSTER_DOMAIN_NAME}}
+  port:
+    targetPort: 8090
+  to:
+    kind: Service
+    name: example-food
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: apiservice-path-creatorder
+  namespace: grub
+spec:
+  host: food-{{YOUR_NAMESPACE}}.{{CLUSTER_DOMAIN_NAME}}
+  path: "/createOrder"
+  port:
+    targetPort: 8080
+  to:
+    kind: Service
+    name: apiservice
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: apiservice-path-status
+  namespace: grub
+spec:
+  host: food-{{YOUR_NAMESPACE}}.{{CLUSTER_DOMAIN_NAME}}
+  path: "/status"
+  port:
+    targetPort: 8080
+  to:
+    kind: Service
+    name: apiservice
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: apiservice-path-restaurants
+  namespace: grub
+spec:
+  host: food-{{YOUR_NAMESPACE}}.{{CLUSTER_DOMAIN_NAME}}
+  path: "/restaurants"
+  port:
+    targetPort: 8080
+  to:
+    kind: Service
+    name: apiservice
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: apiservice-path-user
+  namespace: grub
+spec:
+  host: food-{{YOUR_NAMESPACE}}.{{CLUSTER_DOMAIN_NAME}}
+  path: "/user"
+  port:
+    targetPort: 8080
+  to:
+    kind: Service
+    name: apiservice
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: realtimedata-path-events
+  namespace: grub
+spec:
+  host: food-{{YOUR_NAMESPACE}}.{{CLUSTER_DOMAIN_NAME}}
+  path: "/events"
+  port:
+    targetPort: 8080
+  to:
+    kind: Service
+    name: realtimedata
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: podconsumerdata-path-consumers
+  namespace: grub
+spec:
+  host: food-{{YOUR_NAMESPACE}}.{{CLUSTER_DOMAIN_NAME}}
+  path: "/consumers"
+  port:
+    targetPort: 8080
+  to:
+    kind: Service
+    name: podconsumerdata
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: favorites-path
+  namespace: grub
+spec:
+  host: food-{{YOUR_NAMESPACE}}.{{CLUSTER_DOMAIN_NAME}}
+  path: "/favorites"
+  port:
+    targetPort: 8080
+  to:
+    kind: Service
+    name: ksql-controller
+---

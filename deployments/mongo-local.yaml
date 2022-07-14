@@ -1,0 +1,42 @@
+# single replica - no persistence
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongo
+  namespace: grub
+spec:
+  selector:
+    matchLabels:
+      name: mongo
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: mongo
+        version: v1
+    spec:
+      containers:
+        - image: mongo
+          name: mongo
+          ports:
+            - containerPort: 27017
+          volumeMounts:
+            - mountPath: /data/db
+              name: data
+      volumes:
+      - name: data
+        emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo
+  namespace: grub
+spec:
+  ports:
+    - port: 27017
+      targetPort: 27017
+  selector:
+    name: mongo
+no persistence

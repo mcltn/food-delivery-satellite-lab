@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: icd-cert
+  namespace: {{YOUR_NAMESPACE}}
+type: Opaque
+stringData:
+  icd.pem: |
+    -----BEGIN CERTIFICATE-----
+    {{CERTIFCATE}}
+    -----END CERTIFICATE-----

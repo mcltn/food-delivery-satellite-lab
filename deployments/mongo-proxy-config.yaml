@@ -1,0 +1,46 @@
+static_resources:
+  listeners:
+  - address:
+      socket_address:
+        address: 0.0.0.0
+        port_value: {{MONGO_PRIVATE_PORT}}
+    listener_filters:
+    - name: "envoy.filters.listener.tls_inspector"
+    filter_chains:
+    - filter_chain_match:
+        server_names:
+        - "*.private.databases.appdomain.cloud"
+      filters:
+      - name: envoy.filters.network.sni_cluster
+      - name: envoy.filters.network.tcp_proxy
+        typed_config:
+          "@type": type.googleapis.com/envoy.extensions.filters.network.tcp_proxy.v3.TcpProxy
+          stat_prefix: fallback
+          cluster: {{MONGO_PRIVATE_HOST}}
+
+  clusters:
+  - name: {{MONGO_PRIVATE_HOST}}
+    type: LOGICAL_DNS
+    lb_policy: ROUND_ROBIN
+    connect_timeout: 30s
+    load_assignment:
+      cluster_name: {{MONGO_PRIVATE_HOST}}
+      endpoints:
+      - lb_endpoints:
+        - endpoint:
+            address:
+              socket_address:
+                address: {{MONGO_SATELLITE_HOST}}
+                port_value: {{MONGO_SATELLITE_PORT}}
+
+layered_runtime:
+  layers:
+    - name: static_layer_0
+      static_layer:
+        envoy:
+          resource_limits:
+            listener:
+              example_listener_name:
+                connection_limit: 1000
+        overload:
+          global_downstream_max_connections: 5000
