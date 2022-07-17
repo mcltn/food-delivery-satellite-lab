@@ -2,7 +2,7 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   name: example-food
-  namespace: grub
+  namespace: {{YOUR_NAMESPACE}}
 spec:
   host: food-{{YOUR_NAMESPACE}}.{{CLUSTER_DOMAIN_NAME}}
   port:
@@ -15,7 +15,7 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   name: apiservice-path-creatorder
-  namespace: grub
+  namespace: {{YOUR_NAMESPACE}}
 spec:
   host: food-{{YOUR_NAMESPACE}}.{{CLUSTER_DOMAIN_NAME}}
   path: "/createOrder"
@@ -29,7 +29,7 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   name: apiservice-path-status
-  namespace: grub
+  namespace: {{YOUR_NAMESPACE}}
 spec:
   host: food-{{YOUR_NAMESPACE}}.{{CLUSTER_DOMAIN_NAME}}
   path: "/status"
@@ -43,7 +43,7 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   name: apiservice-path-restaurants
-  namespace: grub
+  namespace: {{YOUR_NAMESPACE}}
 spec:
   host: food-{{YOUR_NAMESPACE}}.{{CLUSTER_DOMAIN_NAME}}
   path: "/restaurants"
@@ -57,7 +57,7 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   name: apiservice-path-user
-  namespace: grub
+  namespace: {{YOUR_NAMESPACE}}
 spec:
   host: food-{{YOUR_NAMESPACE}}.{{CLUSTER_DOMAIN_NAME}}
   path: "/user"
@@ -71,7 +71,7 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   name: realtimedata-path-events
-  namespace: grub
+  namespace: {{YOUR_NAMESPACE}}
 spec:
   host: food-{{YOUR_NAMESPACE}}.{{CLUSTER_DOMAIN_NAME}}
   path: "/events"
@@ -85,7 +85,7 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   name: podconsumerdata-path-consumers
-  namespace: grub
+  namespace: {{YOUR_NAMESPACE}}
 spec:
   host: food-{{YOUR_NAMESPACE}}.{{CLUSTER_DOMAIN_NAME}}
   path: "/consumers"
@@ -99,7 +99,7 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   name: favorites-path
-  namespace: grub
+  namespace: {{YOUR_NAMESPACE}}
 spec:
   host: food-{{YOUR_NAMESPACE}}.{{CLUSTER_DOMAIN_NAME}}
   path: "/favorites"
