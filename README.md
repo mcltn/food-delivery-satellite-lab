@@ -71,7 +71,7 @@ Once the new endpoint has been created, copy the new Satellite Link Endpoint and
 
 ![Link Endpoint](docs/images/satellite-link-endpoint.png)
 
-You will need to create a configmap for the Envoy container using the `mongo-proxy-config.yaml` file. Populate the placeholders for the `{{MONGO_PRIVATE_HOST}}` and `{{MONGO_PRIVATE_PORT}}` with your original MongoDB Private details. Populate the `{{MONGO_SATELLITE_HOST}}` and `{{MONGO_SATELLITE_PORT}}` placeholders with the new Satellite Link details you created.
+You will need to create a configmap for the Envoy container using the `envoy.yaml` file. Populate the placeholders for the `{{MONGO_PRIVATE_HOST}}` and `{{MONGO_PRIVATE_PORT}}` with your original MongoDB Private details. Populate the `{{MONGO_SATELLITE_HOST}}` and `{{MONGO_SATELLITE_PORT}}` placeholders with the new Satellite Link details you created.
 
 `kubectl create configmap mongo-proxy-config --from-file envoy.yaml`
 
