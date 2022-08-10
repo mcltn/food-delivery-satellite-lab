@@ -8,7 +8,9 @@ Food Delivery is a cloud native microservices based application leveraging multi
 
 This set of assets is based on the material used at the Digital Developer Conference: Hybrid Cloud Labs and the IBM Cloud Community Days Conference. You can reference details on the workshops here: https://anthonyamanse.gitbook.io/ibm-satellite-workshop/
 
-The base application itself was developed by Yan Koyfam and Anthony Amaranse and published here: https://github.com/IBM/scaling-apps-with-kafka. It was later modified to remove the dependance on Confluent.
+The base application itself was developed by Yan Koyfam and Anthony Amaranse and published here: https://github.com/IBM/scaling-apps-with-kafka. It was later modified to remove the dependance on Confluent by Dave Tropeano here: https://github.ibm.com/davetropeano/satellite-demo-food-delivery
+
+This version of the deployment has removed the Mongo Database from running locally in the cluster and is dependent on an existing IBM Cloud Databases for MongoDB instance. 
 
 ### Demo Walkthrough
 
@@ -46,35 +48,6 @@ Apply the configmaps and secrets to your project.
 
 `oc create -f icd-secrets.yaml`
 
-#### Note: Private only MongoDB ####
-If you are using a Private MongoDB instance, you will need to also create a Satellite Link entry to connect. You will also need to utilize a Envoy sidecar in the deployment to reference the Satellite Link endpoint, but keeping the original MongoDB hostname for the handshake. In the instructions later, you will need to use the `backend-envoy.yaml` deployment version in place of the `backend.yaml` file.
-
-If you plan to use a Public Endpoint for your ICD Mongo instance, you can skip down to the `Create Satellite Cluster Group` step.
-
-Create a Satellite Link entry with your MongoDB instance private endpoint and port details. From your locations detail page, select `Link Endpoints` and then click 'Create an endpoint`. 
-
-![Link Endpoint](docs/images/create-endpoint-button.png)
-
-Select Cloud for the destination resource and click Next.
-
-![Link Endpoint](docs/images/create-endpoint-step1.png)
-
-Enter a name for your Endpoint, enter the FQDN of the private MongoDB instance, enter the port and click Next.
-
-![Link Endpoint](docs/images/create-endpoint-step2.png)
-
-Select TCP for the Source protocol.
-
-![Link Endpoint](docs/images/create-endpoint-step3.png)
-
-Once the new endpoint has been created, copy the new Satellite Link Endpoint and Port.
-
-![Link Endpoint](docs/images/satellite-link-endpoint.png)
-
-You will need to create a configmap for the Envoy container using the `envoy.yaml` file. Populate the placeholders for the `{{MONGO_PRIVATE_HOST}}` and `{{MONGO_PRIVATE_PORT}}` with your original MongoDB Private details. Populate the `{{MONGO_SATELLITE_HOST}}` and `{{MONGO_SATELLITE_PORT}}` placeholders with the new Satellite Link details you created.
-
-`oc create configmap mongo-proxy-config --from-file envoy.yaml`
-
 #### Create Satellite Cluster Group
 
 - Create a Cloud Satellite cluster group. Add the appropriate cluster to the cluster group.
@@ -85,7 +58,7 @@ You will need to create a configmap for the Envoy container using the `envoy.yam
 
 ![Create Configuration](docs/images/create_configuration.png)
 
-Open the configuration and create a new version using the `kafka-redis.yaml` file and name it something recognizable such as `kafka-redis`, repeat this creation of versions for `backend.yaml`, `frontend.yaml`, `frontend-v2.yaml` files in the deployment folder and name the versions appropriately. Remember to use the `backend-envoy.yaml` instead of `backend.yaml` if you are using Satellite Link for your MongoDB instance connection.
+Open the configuration and create a new version using the `kafka-redis.yaml` file and name it something recognizable such as `kafka-redis`, repeat this creation of versions for `backend.yaml`, `frontend.yaml`, `frontend-v2.yaml` files in the deployment folder and name the versions appropriately.
 
 ![Kafka Redis](docs/images/create-kafka-redis.png)
 
