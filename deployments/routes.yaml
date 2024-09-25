@@ -2,6 +2,7 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   name: example-food
+  namespace: food-delivery
 spec:
   port:
     targetPort: 8090
@@ -13,6 +14,7 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   name: apiservice-path-creatorder
+  namespace: food-delivery
 spec:
   path: "/createOrder"
   port:
@@ -25,6 +27,7 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   name: apiservice-path-status
+  namespace: food-delivery
 spec:
   path: "/status"
   port:
@@ -37,6 +40,7 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   name: apiservice-path-restaurants
+  namespace: food-delivery
 spec:
   path: "/restaurants"
   port:
@@ -49,6 +53,7 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   name: apiservice-path-user
+  namespace: food-delivery
 spec:
   path: "/user"
   port:
@@ -61,6 +66,7 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   name: realtimedata-path-events
+  namespace: food-delivery
 spec:
   path: "/events"
   port:
@@ -73,6 +79,7 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   name: podconsumerdata-path-consumers
+  namespace: food-delivery
 spec:
   path: "/consumers"
   port:
@@ -85,6 +92,7 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   name: favorites-path
+  namespace: food-delivery
 spec:
   path: "/favorites"
   port:
