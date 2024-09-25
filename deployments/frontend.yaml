@@ -2,23 +2,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: example-food
+  name: frontend
   namespace: food-delivery
   labels:
     razee/watch-resource: detail
 spec:
   selector:
     matchLabels:
-      name: example-food
+      name: frontend
   replicas: 1
   template:
     metadata:
       labels:
-        name: example-food
+        name: frontend
     spec:
       containers:
         - image: mcltn/example-food-frontend:1.0
-          name: example-food
+          name: frontend
           imagePullPolicy: Always
           ports:
             - containerPort: 8090
@@ -26,7 +26,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: example-food
+  name: frontend
   namespace: food-delivery
   labels:
     razee/watch-resource: detail
@@ -35,4 +35,4 @@ spec:
     - port: 8090
       targetPort: 8090
   selector:
-    name: example-food
+    name: frontend
