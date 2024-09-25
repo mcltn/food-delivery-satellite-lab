@@ -3,7 +3,6 @@ kind: Route
 metadata:
   name: example-food
 spec:
-  host: food-{{YOUR_NAMESPACE}}.{{CLUSTER_DOMAIN_NAME}}
   port:
     targetPort: 8090
   to:
@@ -15,7 +14,6 @@ kind: Route
 metadata:
   name: apiservice-path-creatorder
 spec:
-  host: food-{{YOUR_NAMESPACE}}.{{CLUSTER_DOMAIN_NAME}}
   path: "/createOrder"
   port:
     targetPort: 8080
@@ -28,7 +26,6 @@ kind: Route
 metadata:
   name: apiservice-path-status
 spec:
-  host: food-{{YOUR_NAMESPACE}}.{{CLUSTER_DOMAIN_NAME}}
   path: "/status"
   port:
     targetPort: 8080
@@ -41,7 +38,6 @@ kind: Route
 metadata:
   name: apiservice-path-restaurants
 spec:
-  host: food-{{YOUR_NAMESPACE}}.{{CLUSTER_DOMAIN_NAME}}
   path: "/restaurants"
   port:
     targetPort: 8080
@@ -54,7 +50,6 @@ kind: Route
 metadata:
   name: apiservice-path-user
 spec:
-  host: food-{{YOUR_NAMESPACE}}.{{CLUSTER_DOMAIN_NAME}}
   path: "/user"
   port:
     targetPort: 8080
@@ -67,7 +62,6 @@ kind: Route
 metadata:
   name: realtimedata-path-events
 spec:
-  host: food-{{YOUR_NAMESPACE}}.{{CLUSTER_DOMAIN_NAME}}
   path: "/events"
   port:
     targetPort: 8080
@@ -80,7 +74,6 @@ kind: Route
 metadata:
   name: podconsumerdata-path-consumers
 spec:
-  host: food-{{YOUR_NAMESPACE}}.{{CLUSTER_DOMAIN_NAME}}
   path: "/consumers"
   port:
     targetPort: 8080
@@ -93,7 +86,6 @@ kind: Route
 metadata:
   name: favorites-path
 spec:
-  host: food-{{YOUR_NAMESPACE}}.{{CLUSTER_DOMAIN_NAME}}
   path: "/favorites"
   port:
     targetPort: 8080
