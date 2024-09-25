@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: apiservice
-  namespace: {{YOUR_NAMESPACE}}
+  namespace: food-delivery
   labels:
     razee/watch-resource: detail
 spec:
@@ -32,7 +32,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: apiservice
-  namespace: {{YOUR_NAMESPACE}}
+  namespace: food-delivery
   labels:
     razee/watch-resource: detail
 spec:
@@ -46,7 +46,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: courier
-  namespace: {{YOUR_NAMESPACE}}
+  namespace: food-delivery
   labels:
     razee/watch-resource: detail
 spec:
@@ -118,7 +118,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: kitchen
-  namespace: {{YOUR_NAMESPACE}}
+  namespace: food-delivery
   labels:
     razee/watch-resource: detail
 spec:
@@ -190,7 +190,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: orders
-  namespace: {{YOUR_NAMESPACE}}
+  namespace: food-delivery
   labels:
     razee/watch-resource: detail
 spec:
@@ -262,7 +262,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: podconsumerdata
-  namespace: {{YOUR_NAMESPACE}}
+  namespace: food-delivery
   labels:
     razee/watch-resource: detail
 spec:
@@ -294,7 +294,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: podconsumerdata
-  namespace: {{YOUR_NAMESPACE}}
+  namespace: food-delivery
   labels:
     razee/watch-resource: detail
 spec:
@@ -308,7 +308,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: realtimedata
-  namespace: {{YOUR_NAMESPACE}}
+  namespace: food-delivery
   labels:
     razee/watch-resource: detail
 spec:
@@ -324,7 +324,7 @@ spec:
       imagePullSecrets:
         - name: all-icr-io
       containers:
-        - image: mcltn/realtimedata:1.0
+        - image: mcltn/realtimedata:2.0
           imagePullPolicy: Always
           name: realtimedata
           ports:
@@ -337,7 +337,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: realtimedata
-  namespace: {{YOUR_NAMESPACE}}
+  namespace: food-delivery
   labels:
     razee/watch-resource: detail
 spec:
@@ -351,7 +351,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: status
-  namespace: {{YOUR_NAMESPACE}}
+  namespace: food-delivery
   labels:
     razee/watch-resource: detail
 spec:
@@ -382,7 +382,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: status
-  namespace: {{YOUR_NAMESPACE}}
+  namespace: food-delivery
   labels:
     razee/watch-resource: detail
 spec:
