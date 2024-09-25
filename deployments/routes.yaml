@@ -1,14 +1,14 @@
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
-  name: example-food
+  name: frontend
   namespace: food-delivery
 spec:
   port:
     targetPort: 8090
   to:
     kind: Service
-    name: example-food
+    name: frontend
 ---
 apiVersion: route.openshift.io/v1
 kind: Route
