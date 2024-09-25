@@ -4,6 +4,7 @@ metadata:
   name: frontend
   namespace: food-delivery
 spec:
+  subdomain: food-delivery
   port:
     targetPort: 8090
   to:
@@ -16,6 +17,7 @@ metadata:
   name: apiservice-path-creatorder
   namespace: food-delivery
 spec:
+  subdomain: food-delivery
   path: "/createOrder"
   port:
     targetPort: 8080
@@ -29,6 +31,7 @@ metadata:
   name: apiservice-path-status
   namespace: food-delivery
 spec:
+  subdomain: food-delivery
   path: "/status"
   port:
     targetPort: 8080
@@ -42,6 +45,7 @@ metadata:
   name: apiservice-path-restaurants
   namespace: food-delivery
 spec:
+  subdomain: food-delivery
   path: "/restaurants"
   port:
     targetPort: 8080
@@ -55,6 +59,7 @@ metadata:
   name: apiservice-path-user
   namespace: food-delivery
 spec:
+  subdomain: food-delivery
   path: "/user"
   port:
     targetPort: 8080
@@ -68,6 +73,7 @@ metadata:
   name: realtimedata-path-events
   namespace: food-delivery
 spec:
+  subdomain: food-delivery
   path: "/events"
   port:
     targetPort: 8080
@@ -81,6 +87,7 @@ metadata:
   name: podconsumerdata-path-consumers
   namespace: food-delivery
 spec:
+  subdomain: food-delivery
   path: "/consumers"
   port:
     targetPort: 8080
@@ -94,6 +101,7 @@ metadata:
   name: favorites-path
   namespace: food-delivery
 spec:
+  subdomain: food-delivery
   path: "/favorites"
   port:
     targetPort: 8080
