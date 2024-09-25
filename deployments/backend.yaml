@@ -324,7 +324,7 @@ spec:
       imagePullSecrets:
         - name: all-icr-io
       containers:
-        - image: mcltn/realtimedata:2.0
+        - image: mcltn/realtimedata:1.0
           imagePullPolicy: Always
           name: realtimedata
           ports:
